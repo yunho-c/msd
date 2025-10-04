@@ -60,7 +60,8 @@ import matplotlib.pyplot as plt
 fig, ax = msd.set_figure(nc=1, nr=1)
 
 # Plot a floor plan graph (assuming you have a graph G)
-# msd.plot_floor(G, ax, node_size=50, edge_size=3)
+msd.plot_floor(G, ax, node_size=50, edge_size=3)
+# plt.show()
 ```
 
 ## MSD datasets
@@ -107,6 +108,41 @@ git checkout yt
 ```bash
 git checkout wip-house-diffusion-msd
 ```
+
+## Visualization
+
+MSD provides convenient functions to visualize floor plans with their access graphs:
+
+### Main Visualization Function
+
+**`plot_floor(G, ax, node_size=50, edge_size=3)`**
+
+Visualizes a floor plan's access graph including:
+- Room shapes colored by room type or zoning type
+- Centroids as nodes (black dots)
+- Door/passage connections (black edges)
+- Entrance connections (red edges, thicker)
+
+```python
+from msd import plot_floor, set_figure
+import matplotlib.pyplot as plt
+
+# Create figure
+fig, ax = set_figure(nc=1, nr=1)
+
+# Plot floor plan with access graph
+plot_floor(G, ax)
+plt.show()
+```
+
+### Supporting Visualization Functions
+
+- **`set_figure(nc, nr, ...)`** - Creates matplotlib figure with proper sizing and font settings
+- **`plot_graph(G, ax, ...)`** - Plots just the graph structure without room shapes
+- **`plot_polygon(ax, poly, ...)`** - Plots individual polygon shapes
+- **`plot_shapes(ax, polygons, colors, ...)`** - Plots multiple room shapes
+
+The visualization automatically uses the appropriate color scheme based on whether your graph has `room_type` or `zoning_type` attributes.
 
 ## Cite
 
