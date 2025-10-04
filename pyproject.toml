@@ -1,0 +1,76 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "msd_dataset"
+version = "0.1.0"
+description = "MSD: A Benchmark Dataset for Floor Plan Generation of Building Complexes"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Casper van Engelenburg"},
+    {name = "Fatemeh Mostafavi"},
+    {name = "Emanuel Kuhn"},
+    {name = "Yuntae Jeon"},
+    {name = "Michael Franzen"},
+    {name = "Matthias Standfest"},
+    {name = "Jan C. van Gemert"},
+    {name = "Seyran Khademi"},
+]
+keywords = ["floor plan", "dataset", "benchmark", "graph", "deep learning", "computer vision"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.20.0",
+    "matplotlib>=3.3.0",
+    "shapely>=2.0.0",
+    "networkx>=2.5",
+    "torch>=1.9.0",
+    "kagglehub>=0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/caspervanengelenburg/msd"
+Documentation = "https://github.com/caspervanengelenburg/msd"
+Repository = "https://github.com/caspervanengelenburg/msd"
+"Bug Tracker" = "https://github.com/caspervanengelenburg/msd/issues"
+"Paper" = "https://arxiv.org/abs/2407.10121"
+
+[project.scripts]
+msd-download = "msd.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+msd = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"

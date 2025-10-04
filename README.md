@@ -28,10 +28,51 @@ Code and data are open.*
 
 ![msd_representation.png](figures/msd_representation.png)
 
+## Installation
+
+Install the package directly from PyPI:
+
+```bash
+pip install msd_dataset
+```
+
+Or install from source:
+
+```bash
+git clone https://github.com/yunho-c/msd.git
+cd msd
+pip install -e .
+```
+
+## Quick Start
+
+```python
+import msd
+
+# Download the dataset
+# First time: run the CLI command
+# msd-download
+
+# Load and visualize a floor plan graph
+import matplotlib.pyplot as plt
+
+# Create a figure
+fig, ax = msd.set_figure(nc=1, nr=1)
+
+# Plot a floor plan graph (assuming you have a graph G)
+# msd.plot_floor(G, ax, node_size=50, edge_size=3)
+```
+
 ## MSD datasets
 
-The complete dataset can be downloaded from [Kaggle](https://www.kaggle.com/datasets/caspervanengelenburg/modified-swiss-dwellings). 
+The complete dataset can be downloaded from [Kaggle](https://www.kaggle.com/datasets/caspervanengelenburg/modified-swiss-dwellings).
 More details on the dataset can be found there.
+
+You can also use the included CLI tool to download the dataset:
+
+```bash
+msd-download
+```
 
 **The graph as base data structure**</br>
 The floor plans come in various linked modalities: image, geometry, and graph. The **main data container is the graph** (`networkx.Graph()` or `torch_geometric.data.Data()`) on-top-of which the room shapes and types (as node-level attributes), the connectivity types (as edge-level attributes) and the full image (as graph-level attribute) are modelled. 
